@@ -1,0 +1,212 @@
+
+.containera{
+    max-width: 1200px;
+    padding: 0 1rem;
+    margin: 0 auto;
+    background: transparent;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: table;
+    margin: auto;
+    
+}
+.productdiv{
+    color: #fff;
+    margin: 1rem 0;
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #fff;
+    border-radius: 3px;
+    column-gap: 10px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    border-radius: 20px;
+}
+.productdivleft{
+    padding: 20px;
+}
+.productdivright{
+    padding: 20px;
+}
+.imgcontainer img{
+    width: 200px;
+    margin: 0 auto;
+    padding: 0 15%;
+    padding-top: 25px;
+}
+
+
+.productdivright span{
+    display: block;
+}
+.productname{
+    font-size: 26px;
+    margin-bottom: 33px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+.productprice{
+    font-weight: 700;
+    font-size: 24px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+.productauthor{
+    font-size: 22px;
+    margin-bottom: 22px;
+    margin-top: 5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+.productrating{
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+.productrating span{
+    margin-right: 6px;
+}
+.productdescription{
+    font-weight: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-top: 22px;
+}
+.btngroups{
+    margin-top: 22px;
+}
+.btngroups button{
+    display: inline-block;
+    font-size: 16px;
+    font-family: inherit;
+    text-transform: uppercase;
+    padding: 15px 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+.btngroups button .fas{
+    margin-right: 8px;
+}
+.addcartbtn{
+    background-color: #f7c068;
+    border: 2px solid #f7c068;
+    margin-right: 8px;
+}
+.addcartbtn:hover{
+    background-color: #fff;
+    color: #f7c068;
+}
+.buynowbtn{
+    background-color: #f85757;
+    border: 2px solid #f85757;
+}
+.buynowbtn:hover{
+    background-color: #fff;
+    color: #f85757;
+}
+
+.desc {
+    font-size: bold;
+    font-size: 22px;
+}
+
+.chatContainer{
+    color: #fff;
+    margin: 1rem 0;
+    padding: 2rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: #fff;
+    border-radius: 3px;
+    column-gap: 10px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    border-radius: 20px;
+}
+
+
+.container {
+    border: 2px solid #dedede;
+    background-color: #fff;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .container img {
+    width: 100%;
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+
+  .commentbox{
+    padding: 10px;
+    overflow: hidden;
+    background-color:cornsilk;
+    color: black;
+    border-radius: 5px;
+  }
+
+  .commentbox .usera{
+    display: flex;
+    width: min-content;
+  }
+
+  .commentbox .imaga img{
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .commentbox textarea{
+    background: #e9e9e9;
+    width: -webkit-fill-available;
+    height: 152px;
+    margin: 10px 0;
+    padding: 10px;
+    resize: inherit;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 0 0.5px #0003;
+  }
+
+  .commentbox textarea:focus-visible{
+    box-shadow:  inset 0 0 0 1px #009cff;
+    outline: none;
+  }
+
+  .commentbox .commentsubmit{
+    float: right;
+    padding: 6px 10px;
+    border: none;
+    background: #009cff;
+    color: #eee;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  .commentbox .commentsubmit:hover{
+    background: #0076bf;
+  }
