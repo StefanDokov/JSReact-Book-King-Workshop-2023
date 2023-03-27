@@ -1,7 +1,7 @@
 import loginstyle from './login.module.css';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../contexts/authContext';
 import { useForm } from '../../hooks/useForm';
 
 export const Login = () => {
