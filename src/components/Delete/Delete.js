@@ -26,9 +26,7 @@ export const Delete = ({
 
     return (
         <div className={deletestyle.wrapper}>
-        <p className={deletestyle.iconclose}>
-            <ion-icon name="close"></ion-icon>
-        </p>
+        
         
         <div className={deletestyle.formbox}>
             <h2>Delete a Book</h2>

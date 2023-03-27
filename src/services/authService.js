@@ -20,7 +20,7 @@ export const authServiceFactory = (token) => {
     logout: () => {
       return request.get(`${rootUrl}/logout`);
       
-    }
+    },
   }
 
 }

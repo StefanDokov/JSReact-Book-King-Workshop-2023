@@ -1,4 +1,4 @@
-const request = async (method, token, url, data) => {
+const requester = async (method, token, url, data) => {
     const options = {};
 
 
@@ -36,11 +36,20 @@ const request = async (method, token, url, data) => {
 
 
 export const requestFactory = (token) => {
+     
+    if (!token) {
+        const unparsedAuth = localStorage.getItem('auth');
+
+        if (unparsedAuth) {
+            const auth = JSON.parse(unparsedAuth);
+            token = auth.accessToken;
+        }
+    }
 
     return {
-        get: request.bind(null, 'GET', token),
-        post: request.bind(null, 'POST', token),
-        put: request.bind(null, 'PUT', token),
-        del: request.bind(null, 'DELETE', token),
+        get: requester.bind(null, 'GET', token),
+        post: requester.bind(null, 'POST', token),
+        put: requester.bind(null, 'PUT', token),
+        del: requester.bind(null, 'DELETE', token),
     }
 }

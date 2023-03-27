@@ -15,9 +15,7 @@ export const Create = ({
 
     return (
         <div className={createstyle.wrapper}>
-        <p className={createstyle.iconclose}>
-            <ion-icon name="close"></ion-icon>
-        </p>
+        
         
         <div className={createstyle.formbox}>
             <h2>Add a Book</h2>

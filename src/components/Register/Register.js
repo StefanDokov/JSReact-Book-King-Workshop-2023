@@ -1,7 +1,7 @@
 import registerstyle from './registerstyle.module.css';
 import {Link} from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import {useForm} from '../../hooks/useForm';
 
 export const Register = () => {
@@ -16,9 +16,7 @@ export const Register = () => {
 
     return (
         <div className={registerstyle.wrapper}>
-        <p className={registerstyle.iconclose}>
-            <ion-icon name="close"></ion-icon>
-        </p>
+        
         
         <div className={registerstyle.formbox}>
             <h2>Sign Up</h2>

@@ -1,7 +1,6 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { AuthContext } from './contexts/authContext';
-import {authServiceFactory} from './services/authService';
+import { AuthProvider } from './contexts/AuthContext';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { Home } from './components/Home/Home';
@@ -21,10 +20,8 @@ import {bookServiceFactory} from './services/bookService';
 function App() {
   const navigate = useNavigate();
   const [books, setBooks] = useState([]);
-  const [auth, setAuth] = useState({});
-  const bookService = bookServiceFactory(auth.accessToken);
-  const authService = authServiceFactory(auth.accessToken);
-
+  const bookService = bookServiceFactory();
+  
   useEffect(() => {
     bookService.getAll()
       .then(res => {
@@ -60,64 +57,11 @@ function App() {
       navigate('/catalog');
   };
 
-  const onLoginSubmit = async(data) => {
-    try{
-    const result = await authService.login(data);
-    
-    setAuth(result);
-
-    navigate('/catalog');
-
-    } catch(err) {
-      throw err.message;
-    }
-
-  };
-
-  const onRegisterSubmit = async(data) => {
-   const {rePass, ...registerData} = data;
-
-   if (rePass !== registerData.password) {
-    return console.log(`Passwords don't match!`);
-   }
-
-    try{
-      const result = await authService.register(registerData);
-
-      setAuth(result);
-
-      navigate('/catalog');
-    } catch(err) {
-      throw err.message;
-    }
-
-  };
-
-  const onLogout = async() => {
-
-    await authService.logout();
-
-    setAuth({});
-
-  };
-
-  const contextEr = {
-    onLoginSubmit,
-    onRegisterSubmit,
-    onLogout,
-    username: auth.username,
-    userId: auth._id,
-    token: auth.accessToken,
-    userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken,
-  };
-
-
 
   return (
     
     <>
-    <AuthContext.Provider value={contextEr}>
+    <AuthProvider>
       <Header />
       <div className="banner">
 
@@ -136,7 +80,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-      </AuthContext.Provider>
+      </AuthProvider>
     </>
     
   );

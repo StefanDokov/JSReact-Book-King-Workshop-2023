@@ -36,9 +36,7 @@ export const Edit = ({
 
     return (
         <div className={editstyle.wrapper}>
-        <p className={editstyle.iconclose}>
-            <ion-icon name="close"></ion-icon>
-        </p>
+        
         
         <div className={editstyle.formbox}>
             <h2>Edit a Book</h2>

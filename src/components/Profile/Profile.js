@@ -1,7 +1,7 @@
 
 import profilestyle from './profilestyle.module.css';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { bookServiceFactory } from '../../services/bookService';
 import { useService } from '../../hooks/useService';
 import { useNavigate } from 'react-router-dom';

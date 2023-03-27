@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { bookServiceFactory } from '../../services/bookService';
 import { useService } from '../../hooks/useService';
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { commentFactory } from '../../services/commentService';
 import { useForm } from '../../hooks/useForm';
 
