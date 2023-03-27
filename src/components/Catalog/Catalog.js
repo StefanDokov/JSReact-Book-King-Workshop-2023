@@ -1,7 +1,7 @@
 import catalogstyle from './catalogstyle.module.css';
 import { Nobooks } from '../Nobooks/Nobooks';
 import { CatalogItem } from './CatalogItems/CatalogItem';
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 import {Booksno} from '../Booksno/Booksno'; 
 
