@@ -3,11 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {bookServiceFactory} from '../../services/bookService';
 import { useService } from '../../hooks/useService';
+import { useBookContext } from '../../contexts/BookContext';
 
-export const Delete = ({
-    onDeleteBookSubmit
-}) => {
-
+export const Delete = () => {
+    const {onDeleteBookSubmit} = useBookContext();
     const { bookId } = useParams();
     const [book, setBook] = useState({});
     const bookService = useService(bookServiceFactory);

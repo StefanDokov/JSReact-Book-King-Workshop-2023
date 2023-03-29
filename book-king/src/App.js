@@ -1,5 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
@@ -14,54 +13,19 @@ import { Profile } from './components/Profile/Profile';
 import { Edit } from './components/Edit/Edit';
 import { Delete } from './components/Delete/Delete';
 import { Logout } from './components/Logout/Logout';
-import {bookServiceFactory} from './services/bookService';
+import { BookProvider } from './contexts/BookContext';
+import { ErrorPage } from './components/404/ErrorPage';
+import { RouteGuard } from './components/guards/RouteGuard';
 
 
 function App() {
-  const navigate = useNavigate();
-  const [books, setBooks] = useState([]);
-  const bookService = bookServiceFactory();
   
-  useEffect(() => {
-    bookService.getAll()
-      .then(res => {
-        setBooks(res)
-      })
-  }, []);
-
-  const onCreateBookSubmit = async (data) => {
-    const newBook = await bookService.create(data);
-
-    setBooks(state => [...state, newBook]);
-
-    navigate('/catalog');
-  };
-
-  const onEditBookSubmit = async (data, id) => {
-    await bookService.edit(data, id);
-    
-    const bookz = await bookService.getAll();
-
-    setBooks(bookz);
-
-    navigate(`/details/${id}`);
-  };
-   
-  const onDeleteBookSubmit = async(bookId) => {
-      await bookService.remove(bookId);
-
-      setBooks(state => {
-          return state.filter(x => x._id !== bookId);
-      });
-
-      navigate('/catalog');
-  };
-
 
   return (
     
     <>
     <AuthProvider>
+      <BookProvider>
       <Header />
       <div className="banner">
 
@@ -70,16 +34,20 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/about' element={<About />} />
-          <Route path='/catalog' element={<Catalog books={books}/>} />
-          <Route path='/create' element={<Create onCreateBookSubmit={onCreateBookSubmit} />} />
-          <Route path='/details/:bookId' element={<Details />} />
+          <Route path='/catalog' element={<Catalog />} />
+          <Route element={<RouteGuard />}>
+          <Route path='/create' element={<Create />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/edit/:bookId' element={<Edit onEditBookSubmit={onEditBookSubmit} />} />
-          <Route path='/delete/:bookId' element={<Delete onDeleteBookSubmit={onDeleteBookSubmit}/>} />
+          </Route>
+          <Route path='/details/:bookId' element={<Details />} />
+          <Route path='/edit/:bookId' element={<Edit  />} />
+          <Route path='/delete/:bookId' element={<Delete />} />
+          <Route path='/404' element={<ErrorPage  />} />
+          <Route path='*' element={<ErrorPage  />} />
         </Routes>
         <Footer />
       </div>
+      </BookProvider>
       </AuthProvider>
     </>
     

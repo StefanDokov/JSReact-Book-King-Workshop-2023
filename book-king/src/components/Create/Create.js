@@ -1,9 +1,9 @@
 import createstyle from './createstyle.module.css';
 import { useForm } from '../../hooks/useForm';
+import { useBookContext } from '../../contexts/BookContext';
 
-export const Create = ({
-    onCreateBookSubmit,
-}) => {
+export const Create = () => {
+    const {onCreateBookSubmit} = useBookContext();
      const {values, changeHandler, onSubmit} = useForm({
         title: '',
         imageUrl: '',

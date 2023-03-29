@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 import { useContext } from 'react';
 
 export const Header = () => {
-    const {username, isAuthenticated} = useContext(AuthContext);
-
+    const {username, isAuthenticated, onLogout} = useContext(AuthContext);
+    
     return (
         <nav className={headstyle.navbar}>
             <Link to="/">
@@ -25,7 +25,7 @@ export const Header = () => {
                 {isAuthenticated && (<>
                     <li><Link to="/profile">My Books</Link></li>
                 <li><Link to="/create">Add a Book</Link></li>
-                <li><Link to="/logout">Logout</Link></li>
+                <li><Link to="" onClick={onLogout}>Logout</Link></li>
                 </>)}
                 
             </ul>

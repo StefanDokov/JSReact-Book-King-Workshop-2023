@@ -4,12 +4,11 @@ import { CatalogItem } from './CatalogItems/CatalogItem';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 import {Booksno} from '../Booksno/Booksno'; 
+import { useBookContext } from '../../contexts/BookContext';
 
-export const Catalog = ( {
-    books
-}
-    ) => {
-        
+export const Catalog = () => {
+       
+    const {books} = useBookContext();    
     const {isAuthenticated} = useContext(AuthContext);
      
     if (!books?.length && !isAuthenticated) {
