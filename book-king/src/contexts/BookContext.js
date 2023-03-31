@@ -11,7 +11,7 @@ export const BookProvider = ({
 }) => {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
-    const bookService = useService(bookServiceFactory);
+    const bookService = bookServiceFactory();
 
     useEffect(() => {
         bookService.getAll()
@@ -47,12 +47,18 @@ export const BookProvider = ({
 
         navigate('/catalog');
     };
+
+    const getBook = (gameId) => {
+          return books.find(game => game._id == gameId);
+    }
     
     const bookContextEr = {
         books,
         onCreateBookSubmit,
         onEditBookSubmit,
-        onDeleteBookSubmit
+        onDeleteBookSubmit,
+        getBook
+        
     }
 
     return (

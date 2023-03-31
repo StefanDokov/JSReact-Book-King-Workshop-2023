@@ -6,7 +6,7 @@ export const RouteGuard = () => {
    const {isAuthenticated} = useContext(AuthContext);
 
    if (!isAuthenticated) {
-    return <Navigate to="/404" />;
+    return <Navigate to={"/404"} />;
    }
 
    return <Outlet />

@@ -2,8 +2,8 @@ import { requestFactory } from "./requester";
 
 const rootUrl = 'http://localhost:3030/data/comments';
 
-export const commentFactory = (token) => {
-    const request = requestFactory(token);
+export const commentFactory = () => {
+    const request = requestFactory();
 
     const getAll = async (bookId) => {
         const query = encodeURIComponent(`bookId="${bookId}"`);

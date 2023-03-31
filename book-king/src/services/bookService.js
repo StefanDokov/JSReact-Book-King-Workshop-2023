@@ -3,8 +3,8 @@ import {requestFactory} from "./requester";
 
 const rootUrl = 'http://localhost:3030/data/books';
 
-export const bookServiceFactory = (token) => {
-    const request = requestFactory(token);
+export const bookServiceFactory = () => {
+    const request = requestFactory();
 
     const getAll = async () => {
         const result = await request.get(rootUrl);
@@ -19,8 +19,9 @@ export const bookServiceFactory = (token) => {
     }
 
     const getOne = async (bookId) => {
+        
         const result = await request.get(`${rootUrl}/${bookId}`);
-
+        
         return result;
     }
 

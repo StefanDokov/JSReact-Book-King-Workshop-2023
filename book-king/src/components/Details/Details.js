@@ -7,14 +7,16 @@ import { useService } from '../../hooks/useService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { commentFactory } from '../../services/commentService';
 import { useForm } from '../../hooks/useForm';
+import { useBookContext } from '../../contexts/BookContext';
 
 
 export const Details = () => {
     const { bookId } = useParams();
     const [book, setBook] = useState({});
-    const bookService = useService(bookServiceFactory);
-    const commentService = useService(commentFactory);
+    const bookService = bookServiceFactory();
+    const commentService = commentFactory();
     const { userId, isAuthenticated, username } = useContext(AuthContext);
+    const {books} = useBookContext();
 
     const onCommentSubmit = async (data) => {
 
@@ -40,10 +42,11 @@ export const Details = () => {
                 comments
             });
         });
-    }, [bookId]);
-
-
-    const isOwner = book._ownerId === userId;
+    }, []);
+    
+    const booker = books.find(book => book._id === bookId);
+    const isOwner = booker?._ownerId === userId;
+    
 
     return (
 

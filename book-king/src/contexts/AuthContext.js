@@ -1,4 +1,4 @@
-import { createContext} from 'react';
+import { createContext, useState} from 'react';
 import {authServiceFactory} from '../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -56,6 +56,7 @@ export const AuthProvider = ({
         navigate('/');
     
       };
+      
 
     const contextEr = {
         onLoginSubmit,
@@ -66,6 +67,7 @@ export const AuthProvider = ({
         token: auth.accessToken,
         userEmail: auth.email,
         isAuthenticated: !!auth.accessToken,
+        
       };
 
     return (

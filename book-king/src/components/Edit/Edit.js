@@ -1,14 +1,17 @@
 import editstyle from './editstyle.module.css';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Navigate, useParams } from 'react-router-dom';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {bookServiceFactory} from '../../services/bookService';
 import { useService } from '../../hooks/useService';
 import { useBookContext } from '../../contexts/BookContext';
+import { AuthContext } from '../../contexts/AuthContext';
+
 
 export const Edit = () => {
-    const {onEditBookSubmit} = useBookContext();
+    const {onEditBookSubmit, books} = useBookContext();
     const { bookId } = useParams();
-    const bookService = useService(bookServiceFactory);
+    const bookService = bookServiceFactory();
+    const {userId} = useContext(AuthContext);
     const [newBook, setNewBook] = useState({
         title: '',
         imageUrl: '',
@@ -16,15 +19,18 @@ export const Edit = () => {
         price: '',
         description: ''
      });
-
+    
     useEffect(() => {
+        
         bookService.getOne(bookId)
             .then(result => {
-               setNewBook(result);
-            });
-    },[bookId]);
+              setNewBook(result);
+    });
+    
 
-
+    }, [bookId]);
+  
+   
     const onChangeHandler = (e) => {
         setNewBook(state => ({...state, [e.target.name]: e.target.value}));
      };
@@ -33,8 +39,17 @@ export const Edit = () => {
         e.preventDefault();
         onEditBookSubmit(newBook, bookId); 
      }
+    const booker = books.find(book => book._id === bookId);
+    
+    
+    if (booker?._ownerId !== userId) {
+        return <Navigate to={"/404"} />;
+    }
+
 
     return (
+        
+        
         <div className={editstyle.wrapper}>
         
         
@@ -70,6 +85,8 @@ export const Edit = () => {
                     <button type="submit" className={editstyle.btn}>Edit</button>      
                 </form>
         </div>
+
+
     </div>
     )
 }

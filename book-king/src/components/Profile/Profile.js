@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
     const {username, userEmail, userId, token} = useContext(AuthContext);
-    const bookService = useService(bookServiceFactory);
+    const bookService = bookServiceFactory();
     const [mybooks, setMybooks] = useState([]);
     const navigate = useNavigate();
  

@@ -1,27 +1,42 @@
 import deletestyle from './deletestyle.module.css';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Navigate, useParams } from 'react-router-dom';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {bookServiceFactory} from '../../services/bookService';
 import { useService } from '../../hooks/useService';
 import { useBookContext } from '../../contexts/BookContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Delete = () => {
-    const {onDeleteBookSubmit} = useBookContext();
-    const { bookId } = useParams();
+    const {onDeleteBookSubmit, books} = useBookContext();
+    const { bookId } = useParams(); 
     const [book, setBook] = useState({});
-    const bookService = useService(bookServiceFactory);
-    useEffect(() => {
-        bookService.getOne(bookId)
+    const bookService = bookServiceFactory();
+    const {userId} = useContext(AuthContext);
+
+    
+   useEffect(() => {
+    
+       bookService.getOne(bookId)
+        
             .then(result => {
+                
                setBook(result);
             });
-    },[bookId]);
+               
+}, [bookId]);  
+
 
     const onSubmit = (e) => {
         e.preventDefault();
         onDeleteBookSubmit(bookId);
     }
+     
+    const booker = books.find(book => book._id === bookId);
 
+    if (booker?._ownerId !== userId) {
+        return <Navigate to={"/404"} />;
+    }
+    
 
     return (
         <div className={deletestyle.wrapper}>

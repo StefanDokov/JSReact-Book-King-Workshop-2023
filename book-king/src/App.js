@@ -16,6 +16,7 @@ import { Logout } from './components/Logout/Logout';
 import { BookProvider } from './contexts/BookContext';
 import { ErrorPage } from './components/404/ErrorPage';
 import { RouteGuard } from './components/guards/RouteGuard';
+import { BookOwner } from './components/guards/BookOwner';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 
   return (
     
-    <>
+    
     <AuthProvider>
       <BookProvider>
       <Header />
@@ -35,13 +36,15 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/about' element={<About />} />
           <Route path='/catalog' element={<Catalog />} />
+
           <Route element={<RouteGuard />}>
-          <Route path='/create' element={<Create />} />
-          <Route path='/profile' element={<Profile />} />
+           <Route path='/create' element={<Create />} />
+           <Route path='/profile' element={<Profile />} /> 
+           <Route path='/edit/:bookId' element={<Edit  />} />
+           <Route path='/delete/:bookId' element={<Delete />} />  
           </Route>
+          
           <Route path='/details/:bookId' element={<Details />} />
-          <Route path='/edit/:bookId' element={<Edit  />} />
-          <Route path='/delete/:bookId' element={<Delete />} />
           <Route path='/404' element={<ErrorPage  />} />
           <Route path='*' element={<ErrorPage  />} />
         </Routes>
@@ -49,7 +52,7 @@ function App() {
       </div>
       </BookProvider>
       </AuthProvider>
-    </>
+    
     
   );
 }

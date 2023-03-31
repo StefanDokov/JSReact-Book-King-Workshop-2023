@@ -4,8 +4,8 @@ import { requestFactory } from "./requester";
 const rootUrl = 'http://localhost:3030/users';
 
 
-export const authServiceFactory = (token) => {
-  const request = requestFactory(token);
+export const authServiceFactory = () => {
+  const request = requestFactory();
   
   return {
     login: (loginData) => {
