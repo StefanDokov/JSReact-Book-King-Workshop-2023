@@ -12,6 +12,7 @@ export const AuthProvider = ({
     const [auth, setAuth] = useLocalStorage('auth', {});
     const authService = authServiceFactory(auth.accessToken);
     const navigate = useNavigate();
+    const [err, setErr] = useState();
 
     const onLoginSubmit = async(data) => {
         try{
@@ -22,7 +23,8 @@ export const AuthProvider = ({
         navigate('/catalog');
     
         } catch(err) {
-          throw err.message;
+          setErr(err.message);
+          setTimeout(() => setErr(), 2000);
         }
     
       };
@@ -31,7 +33,9 @@ export const AuthProvider = ({
         const {rePass, ...registerData} = data;
      
         if (rePass !== registerData.password) {
-         return console.log(`Passwords don't match!`);
+         setErr(`Passwords don't match!`);
+         setTimeout(() => setErr(), 2000);
+          return;
         }
      
          try{
@@ -41,7 +45,8 @@ export const AuthProvider = ({
      
            navigate('/catalog');
          } catch(err) {
-           throw err.message;
+          setErr(err.message);
+            setTimeout(() => setErr(), 2000);
          }
      
        };
@@ -67,6 +72,7 @@ export const AuthProvider = ({
         token: auth.accessToken,
         userEmail: auth.email,
         isAuthenticated: !!auth.accessToken,
+        err,
         
       };
 

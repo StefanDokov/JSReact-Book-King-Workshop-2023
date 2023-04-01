@@ -15,17 +15,21 @@ export const Delete = () => {
 
     
    useEffect(() => {
-    
+      let runEr = true;
        bookService.getOne(bookId)
-        
-            .then(result => {
-                
+            .then(result => { 
+            if (runEr){ 
                setBook(result);
+            }
             });
-               
+         
+           return () => {
+            
+            runEr = false;
+           }    
 }, [bookId]);  
 
-
+ 
     const onSubmit = (e) => {
         e.preventDefault();
         onDeleteBookSubmit(bookId);

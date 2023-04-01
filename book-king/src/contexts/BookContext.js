@@ -14,10 +14,18 @@ export const BookProvider = ({
     const bookService = bookServiceFactory();
 
     useEffect(() => {
+        let runn = true;
         bookService.getAll()
           .then(res => {
+            if(runn){
             setBooks(res)
-          })
+            }
+          });
+          return () => {
+            
+            runn = false;
+           } 
+
       }, []);
 
     const onCreateBookSubmit = async (data) => {

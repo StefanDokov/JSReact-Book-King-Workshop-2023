@@ -6,7 +6,7 @@ import {useForm} from '../../hooks/useForm';
 
 export const Register = () => {
 
-    const {onRegisterSubmit} = useContext(AuthContext);
+    const {onRegisterSubmit, err} = useContext(AuthContext);
     const {values, changeHandler, onSubmit} = useForm({
         username: '',
         email:'',
@@ -15,6 +15,10 @@ export const Register = () => {
     },onRegisterSubmit);
 
     return (
+        <>
+        {err && ( <div className={registerstyle.errorbox}>
+         <span className={registerstyle.errormessage}>{err}</span>
+         </div>)}
         <div className={registerstyle.wrapper}>
         
         
@@ -51,5 +55,6 @@ export const Register = () => {
                 </form>
         </div>
     </div>
+    </>
     )
 }

@@ -21,15 +21,21 @@ export const Edit = () => {
      });
     
     useEffect(() => {
-        
+        let connecti = true;
         bookService.getOne(bookId)
             .then(result => {
+              if(connecti) {
               setNewBook(result);
+              }
     });
-    
+    return () => {
+        
+        connecti = false;
+       } 
 
     }, [bookId]);
   
+    
    
     const onChangeHandler = (e) => {
         setNewBook(state => ({...state, [e.target.name]: e.target.value}));
@@ -39,6 +45,7 @@ export const Edit = () => {
         e.preventDefault();
         onEditBookSubmit(newBook, bookId); 
      }
+     
     const booker = books.find(book => book._id === bookId);
     
     

@@ -33,15 +33,22 @@ export const Details = () => {
     }, onCommentSubmit);
 
     useEffect(() => {
+        let conn = true;
         Promise.all([
             bookService.getOne(bookId),
             commentService.getAll(bookId),
         ])
          .then(([bookData, comments]) => {
+            if(conn) {
             setBook({...bookData,
                 comments
             });
+        }
         });
+        return () => {
+            
+            conn = false;
+           } 
     }, []);
     
     const booker = books.find(book => book._id === bookId);

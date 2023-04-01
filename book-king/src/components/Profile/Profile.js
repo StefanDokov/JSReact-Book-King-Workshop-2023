@@ -13,10 +13,17 @@ export const Profile = () => {
     const navigate = useNavigate();
  
     useEffect(() => {
+        let rese = true;
         bookService.getAllmyBooks(userId)
         .then(res => {
+            if(rese){
             setMybooks(res);
+            }
         });
+        return () => {
+            
+            rese = false;
+           } 
     }, []);
 
 

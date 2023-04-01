@@ -123,3 +123,19 @@
     accent-color: #ffd87b;
     margin-right: 5px;
 }
+
+.errorbox {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    background-color: #ff6666;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .errormessage {
+    font-size: 16px;
+    font-weight: bold;
+  }

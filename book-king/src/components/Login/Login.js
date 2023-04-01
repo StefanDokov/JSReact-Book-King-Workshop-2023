@@ -5,13 +5,17 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { useForm } from '../../hooks/useForm';
 
 export const Login = () => {
-    const { onLoginSubmit } = useContext(AuthContext);
+    const { onLoginSubmit, err } = useContext(AuthContext);
     const { values, changeHandler, onSubmit } = useForm({
         email: '',
         password: '',
     }, onLoginSubmit);
 
     return (
+        <>
+       {err && ( <div className={loginstyle.errorbox}>
+        <span className={loginstyle.errormessage}>{err}</span>
+        </div>)}
         <div className={loginstyle.wrapper}>
             
             <div className={loginstyle.formbox}>
@@ -37,5 +41,6 @@ export const Login = () => {
                 </form>
             </div>
         </div>
+        </>
     )
 }
