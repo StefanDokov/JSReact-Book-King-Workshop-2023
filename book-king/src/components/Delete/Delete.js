@@ -1,6 +1,6 @@
 import deletestyle from './deletestyle.module.css';
 import { Navigate, useParams } from 'react-router-dom';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState, memo } from 'react';
 import {bookServiceFactory} from '../../services/bookService';
 import { useService } from '../../hooks/useService';
 import { useBookContext } from '../../contexts/BookContext';
@@ -29,15 +29,16 @@ export const Delete = () => {
            }    
 }, [bookId]);  
 
- 
+
     const onSubmit = (e) => {
         e.preventDefault();
         onDeleteBookSubmit(bookId);
     }
+  if (book._ownerId) {
      
     const booker = books.find(book => book._id === bookId);
 
-    if (booker?._ownerId !== userId) {
+    if (book._ownerId !== userId) {
         return <Navigate to={"/404"} />;
     }
     
@@ -80,4 +81,6 @@ export const Delete = () => {
         </div>
     </div>
     )
+}
+
 }

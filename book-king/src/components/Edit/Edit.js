@@ -46,10 +46,13 @@ export const Edit = () => {
         onEditBookSubmit(newBook, bookId); 
      }
      
+    if (newBook._ownerId){
+        
+    
     const booker = books.find(book => book._id === bookId);
     
     
-    if (booker?._ownerId !== userId) {
+    if (newBook._ownerId !== userId) {
         return <Navigate to={"/404"} />;
     }
 
@@ -96,4 +99,5 @@ export const Edit = () => {
 
     </div>
     )
+}
 }
