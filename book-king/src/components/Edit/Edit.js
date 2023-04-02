@@ -22,11 +22,16 @@ export const Edit = () => {
     
     useEffect(() => {
         let connecti = true;
+        
         bookService.getOne(bookId)
             .then(result => {
               if(connecti) {
               setNewBook(result);
               }
+            
+    })
+    .catch((e) => {
+        setNewBook(e);
     });
     return () => {
         
@@ -34,8 +39,7 @@ export const Edit = () => {
        } 
 
     }, [bookId]);
-  
-    
+
    
     const onChangeHandler = (e) => {
         setNewBook(state => ({...state, [e.target.name]: e.target.value}));
@@ -44,6 +48,12 @@ export const Edit = () => {
      const onSubmit = (e) => {
         e.preventDefault();
         onEditBookSubmit(newBook, bookId); 
+     }
+
+     if (newBook.code == 404) {
+        
+        return <Navigate to={"/404"} />;
+        
      }
      
     if (newBook._ownerId){

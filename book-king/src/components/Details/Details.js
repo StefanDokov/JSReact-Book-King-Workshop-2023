@@ -1,5 +1,5 @@
 import detailstyle from './detailstyle.module.css';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { bookServiceFactory } from '../../services/bookService';
@@ -44,12 +44,21 @@ export const Details = () => {
                 comments
             });
         }
+        })
+        .catch((e) => {
+            setBook(e);
         });
         return () => {
             
             conn = false;
            } 
     }, []);
+
+    if (book.code == 404) {
+        
+        return <Navigate to={"/404"} />;
+        
+     }
     
     const booker = books.find(book => book._id === bookId);
     const isOwner = booker?._ownerId === userId;

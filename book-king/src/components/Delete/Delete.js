@@ -18,9 +18,13 @@ export const Delete = () => {
       let runEr = true;
        bookService.getOne(bookId)
             .then(result => { 
+              
             if (runEr){ 
                setBook(result);
             }
+            })
+            .catch((e) => {
+                setBook(e);
             });
          
            return () => {
@@ -34,6 +38,13 @@ export const Delete = () => {
         e.preventDefault();
         onDeleteBookSubmit(bookId);
     }
+
+    if (book.code == 404) {
+        
+        return <Navigate to={"/404"} />;
+        
+     }
+
   if (book._ownerId) {
      
     const booker = books.find(book => book._id === bookId);
