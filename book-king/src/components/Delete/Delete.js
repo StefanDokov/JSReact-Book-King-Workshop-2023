@@ -12,6 +12,7 @@ export const Delete = () => {
     const [book, setBook] = useState({});
     const bookService = bookServiceFactory();
     const {userId} = useContext(AuthContext);
+    const [uSure, setSure] = useState(false);
 
     
    useEffect(() => {
@@ -36,8 +37,9 @@ export const Delete = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        onDeleteBookSubmit(bookId);
+        setSure(true);
     }
+    /*onDeleteBookSubmit(bookId); */
 
     if (book.code == 404) {
         
@@ -55,8 +57,21 @@ export const Delete = () => {
     
 
     return (
-        <div className={deletestyle.wrapper}>
         
+        <div className={deletestyle.wrapper}>
+
+         {uSure && (
+            
+            <div id="myModal" className={deletestyle.modal}>
+            <div className={deletestyle.modalcontent}>
+                <p className={deletestyle.modaltext}>Are you sure you want to delete this book?</p>
+                <div className={deletestyle.modalbuttons}>
+                    <button className={deletestyle.yes} onClick={(() => onDeleteBookSubmit(bookId))}>Yes</button>
+                    <button className={deletestyle.no} onClick={(() => setSure(false))}>No</button>
+                </div>
+            </div>
+        </div>
+           )}
         
         <div className={deletestyle.formbox}>
             <h2>Delete a Book</h2>

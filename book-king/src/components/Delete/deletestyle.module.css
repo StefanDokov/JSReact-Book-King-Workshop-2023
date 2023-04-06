@@ -138,3 +138,56 @@ textarea {
     font-weight: 500;
     pointer-events: none;
 }
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modalcontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+.modaltext {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.modalbuttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.modalbuttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.modalbuttons button.yes {
+    background-color: #d43f3a;
+}
+.modalbuttons button.yes:hover {
+    background-color: #c9302c;
+}
+.modalbuttons button.no {
+    background-color: #337ab7;
+}
+.modalbuttons button.no:hover {
+    background-color: #286090;
+}

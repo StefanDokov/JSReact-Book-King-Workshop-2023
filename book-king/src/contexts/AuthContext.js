@@ -30,8 +30,17 @@ export const AuthProvider = ({
       };
 
     const onRegisterSubmit = async(data) => {
-        const {rePass, ...registerData} = data;
-     
+        const {email, rePass, ...registerData} = data;
+
+        const emailreg = /^[a-z|0-9|A-Z]*([_][a-z|0-9|A-Z]+)*([.][a-z|0-9|A-Z]+)*([.][a-z|0-9|A-Z]+)*(([_][a-z|0-9|A-Z]+)*)?@[a-z][a-z|0-9|A-Z]*\.([a-z][a-z|0-9|A-Z]*(\.[a-z][a-z|0-9|A-Z]*)?)$/g
+        const validEmail = email.match(emailreg);
+        
+        if (validEmail === null) {
+          setErr(`Invalid email!`);
+          setTimeout(() => setErr(), 2000);
+           return;
+        }
+
         if (rePass !== registerData.password) {
          setErr(`Passwords don't match!`);
          setTimeout(() => setErr(), 2000);
