@@ -30,10 +30,10 @@ export const AuthProvider = ({
       };
 
     const onRegisterSubmit = async(data) => {
-        const {email, rePass, ...registerData} = data;
+        const {rePass, ...registerData} = data;
 
         const emailreg = /^[a-z|0-9|A-Z]*([_][a-z|0-9|A-Z]+)*([.][a-z|0-9|A-Z]+)*([.][a-z|0-9|A-Z]+)*(([_][a-z|0-9|A-Z]+)*)?@[a-z][a-z|0-9|A-Z]*\.([a-z][a-z|0-9|A-Z]*(\.[a-z][a-z|0-9|A-Z]*)?)$/g
-        const validEmail = email.match(emailreg);
+        const validEmail = registerData.email.match(emailreg);
         
         if (validEmail === null) {
           setErr(`Invalid email!`);
