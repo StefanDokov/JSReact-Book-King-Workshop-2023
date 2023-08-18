@@ -13,7 +13,7 @@ The front end is written in React.
 ## Local Installation
 
 1. Clone the repository
-2. Run `npm install` in both the `book-king` and `Server` folders
+2. Run `npm install` in both the `book-king` and `server` folders
 \
 &nbsp;
 
