@@ -90,23 +90,23 @@ export const Create = () => {
 # Screenshots
 
 ### Home Page 
-<img src="Screenshots/homess.jpg" alt="Home page" width="800">
+<img src="screenshots/homess.jpg" alt="Home page" width="800">
 
 \
 &nbsp;
 ### Books List
-<img src="Screenshots/dashboardss.jpg" alt="Books list" width="800">
+<img src="screenshots/dashboardss.jpg" alt="Books list" width="800">
 
 \
 
 &nbsp;
 ### Profile Page
-<img src="Screenshots/profiless.jpg" alt="Profile page" width="800">
+<img src="screenshots/profiless.jpg" alt="Profile page" width="800">
 
 \
 &nbsp;
 ### Create User
-<img src="Screenshots/registerss.jpg" alt="Create user" width="800">
+<img src="screenshots/registerss.jpg" alt="Create user" width="800">
 
 \
 
