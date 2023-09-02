@@ -92,22 +92,22 @@ export const Create = () => {
 ### Home Page 
 <img src="screenshots/homess.jpg" alt="Home page" width="800">
 
-\
+
 &nbsp;
 ### Books List
 <img src="screenshots/dashboardss.jpg" alt="Books list" width="800">
 
-\
+
 
 &nbsp;
 ### Profile Page
 <img src="screenshots/profiless.jpg" alt="Profile page" width="800">
 
-\
+
 &nbsp;
 ### Create User
 <img src="screenshots/registerss.jpg" alt="Create user" width="800">
 
-\
+
 
 &nbsp;
