@@ -90,37 +90,24 @@ export const Create = () => {
 # Screenshots
 
 ### Home Page 
-<img src="Screenshots/homepage.jpg" alt="Home page" width="800">
+<img src="Screenshots/homess.jpg" alt="Home page" width="800">
 
 \
 &nbsp;
-### Cars List
-<img src="Screenshots/bookspage.jpg" alt="Books list" width="800">
+### Books List
+<img src="Screenshots/dashboardss.jpg" alt="Books list" width="800">
 
 \
-&nbsp;
-### Details Page
-<img src="Screenshots/detailspage.jpg" alt="Details page" width="800">
 
-\
 &nbsp;
 ### Profile Page
-<img src="Screenshots/profilepage.jpg" alt="Profile page" width="800">
+<img src="Screenshots/profiless.jpg" alt="Profile page" width="800">
 
 \
 &nbsp;
 ### Create User
-<img src="Screenshots/registerpage.jpg" alt="Create user" width="800">
+<img src="Screenshots/registerss.jpg" alt="Create user" width="800">
 
 \
-&nbsp;
-### Create-Edit Rents
-<img src="Screenshots/editpage.jpg" alt="Create-Edit Forms" width="800">
 
-\
-&nbsp;
-### Delete Form
-<img src="Screenshots/deletepage.jpg" alt="Delete confirm" width="800">
-
-\
 &nbsp;
